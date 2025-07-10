@@ -1,0 +1,44 @@
+name: olvid-tsugu
+base: core24
+version: '2.5.1'
+summary: Private messaging for everyone
+description: |
+  Olvid does not require any personal data: no phone number, no email, no name, no surname, no address, no date of birth.
+  With Olvid, everything is end-to-end encrypted using cryptographic protocols with unrivalled power. Your messages & attachments are systematically protected.
+  Olvid’s cryptographic protocols are able to guarantee the security of your data even if our servers are hacked
+  No nothing
+  Unlike your previous messenger, Olvid will never request access to your address book
+  Six years of R&D have enabled us to propose a solution that makes no compromise on safety, while remaining very simple to use. 
+  Your exchanges leave no digital trace. No one will ever know who you’ve discussed with.
+  Not even us.
+
+grade: stable
+confinement: strict
+
+parts:
+  olvid-tsugu:
+    source: https://static.olvid.io/linux/olvid-${SNAPCRAFT_PROJECT_VERSION}.tar.gz
+    plugin: dump
+    source-type: tar
+    stage-packages:
+      - libproxy1v5 
+
+apps:
+  olvid-tsugu:
+    command: bin/olvid
+    extensions: [gnome]
+    environment:
+      XDG_DATA_HOME: "$SNAP_USER_COMMON"
+      LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libproxy
+    plugs:
+      - network
+      - network-bind
+      - home
+      - removable-media
+      - desktop
+      - desktop-legacy
+      - audio-playback
+      - password-manager-service
+      - x11
+      - wayland
+      - unity7
