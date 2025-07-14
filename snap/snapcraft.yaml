@@ -15,6 +15,11 @@ description: |
 grade: stable
 confinement: strict
 
+lint:
+  ignore:
+    - classic
+    - library
+
 parts:
   olvid-tsugu:
     source: https://static.olvid.io/linux/olvid-${SNAPCRAFT_PROJECT_VERSION}.tar.gz
@@ -28,7 +33,9 @@ apps:
     command: bin/olvid
     extensions: [gnome]
     environment:
+      HOME: "$SNAP_USER_DATA"
       XDG_DATA_HOME: "$SNAP_USER_COMMON"
+      _JAVA_OPTIONS: -Djavafx.cachedir=$SNAP_USER_DATA/.openjfx/cache
       LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libproxy
     plugs:
       - network
