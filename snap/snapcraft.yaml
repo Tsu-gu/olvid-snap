@@ -19,7 +19,10 @@ lint:
   ignore:
     - classic
     - library
-
+    
+platforms:
+  amd64:
+  
 parts:
   olvid-tsugu:
     source: https://static.olvid.io/linux/olvid-${SNAPCRAFT_PROJECT_VERSION}.tar.gz
