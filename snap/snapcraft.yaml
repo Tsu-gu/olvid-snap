@@ -48,6 +48,7 @@ apps:
       - desktop
       - desktop-legacy
       - audio-playback
+      - audio-record
       - password-manager-service
       - x11
       - wayland
