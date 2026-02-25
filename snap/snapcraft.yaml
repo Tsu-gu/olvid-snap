@@ -1,6 +1,6 @@
 name: olvid-tsugu
 base: core24
-version: '2.7.0'
+version: '2.8.0'
 summary: Private messaging for everyone
 description: |
   Olvid does not require any personal data: no phone number, no email, no name, no surname, no address, no date of birth.
